@@ -1,6 +1,5 @@
 
-const API_URL = "https://hospital-management-system-k93c.onrender.com";
-
+const API_URL = "https://hospital-management-system-k93c.onrender.com/api";
 const $ = (id) => document.getElementById(id);
 
 let currentUser = null;

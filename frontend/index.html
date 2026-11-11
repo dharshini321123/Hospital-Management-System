@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediCare | Hospital Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="brand">
+            <span class="brand-icon">✚</span>
+            <div>
+                <h2>MediCare</h2>
+                <small>Hospital Management System</small>
+            </div>
+        </div>
+        <button id="logoutBtn" class="btn btn-outline hidden">Logout</button>
+    </header>
+
+    <main class="container">
+        <section id="loginSection" class="login-layout">
+            <div class="welcome-panel">
+                <span class="tag">HOSPITAL MANAGEMENT</span>
+                <h1>Healthcare made simple.</h1>
+                <p>Patient registration, doctor consultation and pharmacy management.</p>
+            </div>
+            <div class="login-card">
+                <h2>Staff Login</h2>
+                <p class="muted">Sign in to continue.</p>
+                <form id="loginForm">
+                    <label for="email">Staff Email</label>
+                    <input id="email" type="email" required autocomplete="username" placeholder="Enter staff email">
+
+                    <label for="password">Password</label>
+                    <input id="password" type="password" required autocomplete="current-password"
+                        placeholder="Enter password">
+
+                    <button class="btn btn-primary full-width" type="submit">Login</button>
+                    <p id="loginMessage" class="message" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+
+        <section id="dashboardSection" class="hidden">
+            <div class="page-heading">
+                <div>
+                    <span class="tag">WORKSPACE</span>
+                    <h1 id="dashboardTitle">Dashboard</h1>
+                    <p id="welcomeText" class="muted"></p>
+                </div>
+                <span id="roleBadge" class="role-badge"></span>
+            </div>
+
+            <div id="notice" class="notice hidden"></div>
+
+            <!-- Receptionist -->
+            <section id="receptionPanel" class="hidden">
+                <div class="content-grid">
+                    <div class="panel">
+                        <h2>Register New Patient</h2>
+                        <p class="muted">Enter patient details and assign the appropriate doctor.</p>
+
+                        <form id="patientForm">
+                            <label for="patientName">Full Name *</label>
+                            <input id="patientName" required maxlength="100" placeholder="Enter patient's full name">
+
+                            <div class="two-columns">
+                                <div>
+                                    <label for="patientAge">Age *</label>
+                                    <input id="patientAge" type="number" min="0" max="120" step="1" required
+                                        placeholder="Age">
+                                </div>
+                                <div>
+                                    <label for="patientGender">Gender *</label>
+                                    <select id="patientGender" required>
+                                        <option value="">Select gender</option>
+                                        <option>Female</option>
+                                        <option>Male</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <label for="patientPhone">Mobile Number *</label>
+                            <input id="patientPhone" type="tel" required maxlength="20"
+                                placeholder="Enter mobile number">
+
+                            <label for="patientProblem">Patient Problem / Symptoms *</label>
+                            <textarea id="patientProblem" required maxlength="2000" rows="4"
+                                placeholder="What problem is the patient experiencing?"></textarea>
+
+                            <label for="department">Problem Category *</label>
+                            <select id="department" required>
+                                <option value="">Select problem category</option>
+                            </select>
+
+                            <label for="doctorSelect">Assign Doctor *</label>
+                            <select id="doctorSelect" required disabled>
+                                <option value="">Select category first</option>
+                            </select>
+
+                            <button class="btn btn-primary full-width" type="submit">
+                                Register & Assign Doctor
+                            </button>
+                            <p id="patientMessage" class="message" aria-live="polite"></p>
+                        </form>
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <div>
+                                <h2>Registered Patients</h2>
+                                <p class="muted">Patient details and assigned doctors.</p>
+                            </div>
+                            <button id="refreshPatients" class="btn btn-outline">Refresh</button>
+                        </div>
+                        <div id="patientList" class="patient-list">Loading patients...</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Doctor -->
+            <section id="doctorPanel" class="hidden">
+                <div class="panel">
+                    <h2>My Assigned Patients</h2>
+                    <p class="muted">Only patients assigned to your account are shown here.</p>
+                    <button id="refreshDoctorPatients" class="btn btn-outline">Refresh</button>
+                    <div id="doctorPatientList" class="patient-list"></div>
+                </div>
+            </section>
+
+            <!-- Pharmacy -->
+            <section id="pharmacyPanel" class="hidden">
+                <div class="panel">
+                    <h2>Prescriptions</h2>
+                    <p class="muted">Review prescriptions and update medicine dispensing.</p>
+                    <button id="refreshPrescriptions" class="btn btn-outline">Refresh</button>
+                    <div id="prescriptionList" class="patient-list"></div>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <footer>
+        <p>MediCare Hospital Management System</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

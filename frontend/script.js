@@ -1,5 +1,5 @@
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://hospital-management-system-k93c.onrender.com";
 
 const $ = (id) => document.getElementById(id);
 
